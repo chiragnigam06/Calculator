@@ -15,15 +15,9 @@ A modern calculator built with **HTML**, **CSS**, and **JavaScript**, featuring 
 
 ## 🛠️ Technologies Used
 
-* HTML5
-* CSS3
+* HTML
+* CSS
 * JavaScript
-
-## 🚀 Getting Started
-
-1. Clone or download the repository.
-2. Open `index.html` in your browser.
-3. Start calculating!
 
 ## 🔮 Future Enhancements
 
