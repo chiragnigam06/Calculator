@@ -1,0 +1,636 @@
+/* ===========================
+   GOOGLE FONT & RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #07152d,
+        #112240,
+        #1b3358,
+        #101b38
+    );
+
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+/* ===========================
+   ANIMATED BACKGROUND
+=========================== */
+
+.background{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-2;
+}
+
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    opacity:.55;
+    animation:float 18s ease-in-out infinite;
+}
+
+.blob1{
+    width:320px;
+    height:320px;
+
+    background:#00e5ff;
+
+    left:-100px;
+    top:-60px;
+}
+
+.blob2{
+    width:280px;
+    height:280px;
+
+    background:#8b5cf6;
+
+    right:-80px;
+    top:180px;
+
+    animation-delay:4s;
+}
+
+.blob3{
+    width:350px;
+    height:350px;
+
+    background:#3b82f6;
+
+    bottom:-140px;
+    left:35%;
+
+    animation-delay:8s;
+}
+
+/* ===========================
+   CALCULATOR
+=========================== */
+
+.calculator{
+
+    width:360px;
+
+    padding:28px;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+    0 30px 60px rgba(0,0,0,.45),
+    inset 0 1px 1px rgba(255,255,255,.18);
+
+    animation:calculatorAppear .9s ease;
+}
+
+/* ===========================
+   HEADING
+=========================== */
+
+.heading{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.heading h2{
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+}
+
+.heading p{
+
+    margin-top:3px;
+
+    color:#9bb7ff;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+/* ===========================
+   DISPLAY
+=========================== */
+
+.display-box{
+
+    margin-bottom:22px;
+}
+
+#display{
+
+    width:100%;
+
+    height:75px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    text-align:right;
+
+    font-size:30px;
+
+    color:white;
+
+    font-weight:500;
+
+    background:rgba(255,255,255,.09);
+
+    box-shadow:
+    inset 5px 5px 12px rgba(0,0,0,.35),
+    inset -3px -3px 8px rgba(255,255,255,.06),
+    0 0 10px rgba(0,229,255,.15);
+
+    transition:.35s;
+}
+
+#display::placeholder{
+    color:#d0d7ff;
+}
+
+/* Glow after calculation */
+
+.display-glow{
+
+    animation:displayGlow .6s ease;
+}
+
+/* ===========================
+   BUTTON GRID
+=========================== */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:16px;
+}
+
+/* ===========================
+   BUTTON BASE
+=========================== */
+
+.btn{
+
+    position:relative;
+
+    height:68px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    font-family:'Poppins',sans-serif;
+
+    transition:
+    transform .18s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+
+    user-select:none;
+
+    overflow:hidden;
+}
+
+/* glossy top */
+
+.btn::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:8px;
+    right:8px;
+    top:7px;
+
+    height:35%;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.16);
+
+    pointer-events:none;
+}
+
+/* ripple shine */
+
+.btn::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    left:-130px;
+    top:-20px;
+
+    background:rgba(255,255,255,.14);
+
+    transform:rotate(25deg);
+
+    transition:.6s;
+}
+
+.btn:hover::after{
+
+    left:120%;
+}
+
+/* ===========================
+   NUMBER BUTTONS
+=========================== */
+
+.number{
+
+    background:linear-gradient(
+        180deg,
+        #46526d,
+        #2e374c
+    );
+
+    box-shadow:
+    0 8px 0 #1b2232,
+    0 12px 25px rgba(0,0,0,.35);
+}
+
+.number:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 0 #1b2232,
+    0 18px 30px rgba(59,130,246,.35),
+    0 0 18px rgba(59,130,246,.25);
+}
+
+.number:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+    0 2px 0 #1b2232,
+    0 6px 12px rgba(0,0,0,.35);
+}
+
+/* ===========================
+   OPERATOR BUTTONS
+=========================== */
+
+.operator{
+
+    background:linear-gradient(
+        180deg,
+        #ffb547,
+        #ff8a00
+    );
+
+    box-shadow:
+    0 8px 0 #bb5d00,
+    0 12px 25px rgba(255,136,0,.40);
+}
+
+.operator:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 0 #bb5d00,
+    0 18px 35px rgba(255,166,0,.45),
+    0 0 22px rgba(255,170,0,.45);
+}
+
+.operator:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+    0 2px 0 #bb5d00;
+}
+
+/* ===========================
+   EQUAL BUTTON
+=========================== */
+
+.equal{
+
+    background:linear-gradient(
+        180deg,
+        #4aa8ff,
+        #006eff
+    );
+
+    box-shadow:
+    0 8px 0 #0045a3,
+    0 12px 28px rgba(0,110,255,.45);
+}
+
+.equal:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 0 #0045a3,
+    0 20px 36px rgba(0,132,255,.50),
+    0 0 24px rgba(0,153,255,.45);
+}
+
+.equal:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+    0 2px 0 #0045a3;
+}
+
+/* ===========================
+   CLEAR BUTTON
+=========================== */
+
+.clear{
+
+    background:linear-gradient(
+        180deg,
+        #ff6d6d,
+        #e53935
+    );
+
+    box-shadow:
+    0 8px 0 #9d2020,
+    0 12px 28px rgba(255,70,70,.40);
+}
+
+.clear:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 0 #9d2020,
+    0 18px 35px rgba(255,70,70,.50),
+    0 0 20px rgba(255,70,70,.40);
+}
+
+.clear:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+    0 2px 0 #9d2020;
+}
+
+/* ===========================
+   DELETE BUTTON
+=========================== */
+
+.delete{
+
+    background:linear-gradient(
+        180deg,
+        #a86cff,
+        #7b2cff
+    );
+
+    box-shadow:
+    0 8px 0 #52189b,
+    0 12px 28px rgba(150,70,255,.40);
+}
+
+.delete:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 12px 0 #52189b,
+    0 18px 35px rgba(160,80,255,.50),
+    0 0 22px rgba(170,90,255,.45);
+}
+
+.delete:active{
+
+    transform:translateY(6px);
+
+    box-shadow:
+    0 2px 0 #52189b;
+}
+
+/* ===========================
+   ZERO BUTTON
+=========================== */
+
+.zero{
+
+    grid-column:span 2;
+}
+
+/* ===========================
+   BUTTON GLOW
+=========================== */
+
+.btn:hover{
+
+    color:white;
+}
+
+.btn:focus{
+
+    outline:none;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:430px){
+
+.calculator{
+
+    width:95%;
+
+    padding:20px;
+}
+
+#display{
+
+    height:70px;
+
+    font-size:26px;
+}
+
+.btn{
+
+    height:62px;
+
+    font-size:20px;
+}
+
+.buttons{
+
+    gap:12px;
+}
+
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes bgMove{
+
+0%{
+
+background-position:0% 50%;
+}
+
+50%{
+
+background-position:100% 50%;
+}
+
+100%{
+
+background-position:0% 50%;
+}
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px)
+translateX(0px)
+scale(1);
+}
+
+25%{
+
+transform:translateY(-35px)
+translateX(20px)
+scale(1.08);
+}
+
+50%{
+
+transform:translateY(10px)
+translateX(-25px)
+scale(.95);
+}
+
+75%{
+
+transform:translateY(-15px)
+translateX(25px)
+scale(1.05);
+}
+
+100%{
+
+transform:translateY(0px)
+translateX(0px)
+scale(1);
+}
+
+}
+
+@keyframes calculatorAppear{
+
+0%{
+
+opacity:0;
+
+transform:
+translateY(50px)
+scale(.85);
+}
+
+100%{
+
+opacity:1;
+
+transform:
+translateY(0)
+scale(1);
+}
+
+}
+
+@keyframes displayGlow{
+
+0%{
+
+box-shadow:
+inset 5px 5px 12px rgba(0,0,0,.35),
+0 0 0 rgba(0,255,255,0);
+}
+
+50%{
+
+box-shadow:
+inset 5px 5px 12px rgba(0,0,0,.35),
+0 0 30px rgba(0,255,255,.9),
+0 0 60px rgba(0,255,255,.45);
+}
+
+100%{
+
+box-shadow:
+inset 5px 5px 12px rgba(0,0,0,.35),
+0 0 0 rgba(0,255,255,0);
+}
+
+}
